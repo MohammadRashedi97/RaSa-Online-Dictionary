@@ -1,5 +1,5 @@
 @extends('layouts.frontend.main')
-
+<span>Hello World</span>
 @section('title' , 'RaSa Online Dictionary')
 
 @section('search')
