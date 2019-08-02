@@ -1,0 +1,253 @@
+/* Sahel Font */
+@font-face{
+     font-family: sahel;
+  src: url('/webfonts/Sahel.ttf'),
+       url('/webfonts/Sahel.eot'),
+       url('/webfonts/Sahel.woff'),
+       url('/webfonts/Sahel.woff2');
+}
+
+/* HTML */
+html {
+     min-height: 100%;
+     position: relative;
+}
+
+/* Body Styles */
+body{
+     padding: 0;
+     margin: 0;
+     background-color: #F5F5F5;
+     line-height: 1.7;
+     font-family: sahel, sans-serif;
+}
+
+/* Rasa Brand Style (Middle of navbar) */
+#brand-style{
+     font-size: 36px;
+     font-weight: bolder;
+     background: rgb(131,58,180);
+     background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+     -webkit-background-clip: text;
+     background-clip: text;
+     -webkit-text-fill-color: transparent;
+}
+
+/* alert class in messages */
+.alert{
+     background-color: rgb(55, 146, 55);
+     color: white;
+}
+
+/* Styles for the whole serach box */
+#search-box{
+     background-color: brown;
+}
+
+/* Search input */
+#search{
+     height: 50px;
+     border-radius: 10px;
+}
+
+/* Parent of search input */
+.search-widget{
+     width: 85%;
+     margin: auto;
+}
+
+/* class for centering images (and possibly other things) */
+.center {
+     display: block;
+     margin-left: auto;
+     margin-right: auto;
+     width: 50%;
+}
+
+/* blue <hr> */
+.sky-hr{
+     height: 1px;
+     border-width: 0;
+     border-top: solid 1px rgb(48, 200, 247);
+     margin: 0 25px 0 25px;
+}
+
+/* purple <hr> */
+.blue-hr{
+     height: 2px;
+     background-color: rgb(30, 11, 97);
+     border-width: 0;
+     border-top: solid 1px #E2E2E2;
+     margin: 0 25px 0 25px;
+}
+
+/* Abadis-like Section title */
+.section-title{
+     width: 200px;
+     height: 30px;
+     background-color: blue;
+     color: white;
+     text-align: center;
+     font-weight: bold;
+     font-size: 20px;
+     position: relative;
+     top: -45px;
+}
+
+/* styles for all cards */
+.card{
+     padding: 15px;
+     box-shadow: #E2E2E2 0 3px 10px;
+}
+
+/* styles for the left and right cards in index page */
+#left-card, #right-card{
+     height: 220px !important;
+     direction: rtl;
+}
+
+/* first page introduction */
+#introduction{
+     border-top: 2px blue solid;
+     direction: rtl;
+     background-color: white;
+     padding: 30px;
+     font-size: 17px;
+     margin-top: 50px;
+}
+
+/* American pronounciation in show view */
+#pronounce-US{
+     color: rgb(88, 189, 230);
+     cursor: pointer;
+     margin-right: 100px;
+     margin-top: 35px;
+     font-size: 22px;
+}
+
+/* British pronounciation in show view */
+#pronounce-UK{
+     color: red;
+     cursor: pointer;
+     margin-right: 20px;
+     margin-top: 35px;
+     font-size: 22px;
+}
+
+/* Categoty title */
+.category-header{
+     color: rgb(84, 126, 243);
+}
+
+/* The box containing everything about word */
+#word-definitions{
+     background-color: white;
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+     border-radius: 5px;
+     padding-bottom: 50px;
+     margin-bottom: 10px;
+}
+
+/* title and pronounciations of a word */
+#word-title{
+     margin-bottom: 30px;
+}
+
+/* title of a page */
+#word{
+     position: relative;
+     top: 20px;
+     left: 30px;
+}
+
+/* English Definition */
+#english-definition{
+     margin: 20px;
+}
+
+/* Persian Definition */
+.persian-definition{
+     margin: 30px;
+     direction: rtl;
+}
+
+.english-definition{
+     margin: 30px;
+}
+
+.example{
+     margin: 30px;
+}
+
+.meaning{
+     margin: 30px;
+     direction: rtl;
+}
+
+/* logged user dropdown */
+#dropdown{
+     margin-right: 200px;
+}
+
+/* show view edit button */
+.edit{
+     margin-left: 20px;
+     width: 100px;
+}
+
+/* show view delete button */
+.delete{
+     margin-right: 20px;
+     width: 100px;
+}
+
+/* form styles */
+#form-card{
+     width: 70rem;
+}
+
+/* postition register and login buttons correctly */
+#register{
+     margin-right: 200px;
+     margin-left: 20px;
+}
+
+/* styles for the main container of not-found view */
+#not-found{
+     border-radius: 5px;
+     background-color: darkslategray;
+     color: white;
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/* Autocomplete styles */
+.ui-menu{
+     width: 10% !important;
+     border-radius: 5px !important;
+}
+
+/* google OAuth button */
+#google{
+     background-color: rgb(241, 58, 58);
+     width: 100%;
+}
+
+/* google OAuth button hover effect*/
+.google:hover{
+     background-color: rgb(233, 28, 28);
+}
+
+#edit-link{
+     font-size: 25px;
+     text-decoration: underline;
+}
+
+.add-definition{
+     position: relative;
+     left: 20px;
+     top: -30px;
+}
+
+.persian-definition p, .english-definition p, .example p, .meaning p{
+     display: inline;
+}

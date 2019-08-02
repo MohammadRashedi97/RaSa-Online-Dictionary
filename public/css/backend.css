@@ -1,0 +1,12 @@
+#capital-link{
+     margin-top: 20px;
+     margin-left: 40px;
+     width: 300px;
+     color: rgb(69, 12, 160);
+     font-size: 20px;
+}
+
+#capital-link:hover{
+     color: rgb(160, 12, 12);
+     font-size: 22px;
+}
