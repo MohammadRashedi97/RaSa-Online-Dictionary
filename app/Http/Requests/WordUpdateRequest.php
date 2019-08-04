@@ -24,7 +24,7 @@ class WordUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'word' => 'required'
+            'word' => 'required|unique:words,word'
         ];
     }
 }

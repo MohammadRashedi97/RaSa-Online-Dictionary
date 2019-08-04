@@ -11,7 +11,7 @@
 
                {{-- Display errors if present --}}
                @if ($errors->has('word'))
-                    <span class="text-danger">Word field is required.</span>
+                    <span class="text-danger">{{$errors->first('word')}}</span>
                @endif
           </div>
           <br>
