@@ -48,6 +48,11 @@ class ExampleController extends Controller
      */
     public function store(Request $request, Word $word)
     {
+        $request->validate([
+            'example' => 'required|string|max:255',
+            'meaning' => 'max:255'
+        ]);
+
         $example = new Example();
         $example->example = Purifier::clean($request['example']);
         $example->meaning = Purifier::clean($request['meaning']);
@@ -90,6 +95,11 @@ class ExampleController extends Controller
      */
     public function update(Request $request, Word $word, $id)
     {
+        $request->validate([
+            'example' => 'required|string|max:255',
+            'meaning' => 'max:255'
+        ]);
+
         $example = Example::findOrFail($id);
 
         // update the word with id

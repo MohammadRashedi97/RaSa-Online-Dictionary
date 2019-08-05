@@ -6,7 +6,7 @@
 
      <br>
      {{-- Form Title --}}
-     <h1 class="text-center" style="color: brown;">Edit a Definition</h1>
+     <h1 class="text-center" style="color: brown;">ویرایش تعریف انگلیسی</h1>
 
      {{-- Form for creating a new word (POST) --}}
      {!! Form::model($definition,[

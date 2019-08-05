@@ -48,6 +48,10 @@ class EnglishDefinitionController extends Controller
      */
     public function store(Request $request, Word $word)
     {
+        $request->validate([
+            'englishDefinition' => 'required|string|max:255'
+        ]);
+
         $englishDefinition = new EnglishDefinition();
         $englishDefinition->englishDefinition = Purifier::clean($request['englishDefinition']);
         $englishDefinition->word_id = $word->id;
@@ -89,6 +93,10 @@ class EnglishDefinitionController extends Controller
      */
     public function update(Request $request, Word $word, $id)
     {
+        $request->validate([
+            'englishDefinition' => 'required|string|max:255'
+        ]);
+
         $definition = EnglishDefinition::findOrFail($id);
 
         // update the word with id

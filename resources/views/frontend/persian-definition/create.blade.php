@@ -6,7 +6,7 @@
 
      <br>
      {{-- Form Title --}}
-     <h1 class="text-center" style="color: brown;">Create a New Persian Definition</h1>
+     <h1 class="text-center" style="color: brown;">ایجاد یک کلمه جدید</h1>
 
      {{-- Form for creating a new word (POST) --}}
      {{ Form::model($definition,[

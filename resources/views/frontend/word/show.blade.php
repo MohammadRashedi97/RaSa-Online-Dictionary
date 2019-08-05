@@ -21,7 +21,7 @@
                </div>
 
                <div class="col-4 text-center" style="margin-top: 20px;">
-                    <span><a id="edit-link" href="{{route('word.edit', $word->id)}}">Edit</a></span>
+                    <span><a id="edit-link" href="{{route('word.edit', $word->id)}}">ویرایش کلمه</a></span>
                </div>
 
                <div class="col-4">
@@ -50,8 +50,7 @@
 
                     @if($loop->first)
                          @auth
-                              <a href="{{route('persian.create', $word->id)}}" class="btn btn-success add-definition">+ Add New Persian
-                              Definition</a>
+                              <a href="{{route('persian.create', $word->id)}}" class="btn btn-success add-definition">اضافه کردن معنای فارسی جدید +</a>
                          @endauth
                     @endif
 
@@ -80,7 +79,7 @@
                                    <div class="col-4">
                                         @auth
                                         <a href="{{route('persian.edit' , [$word->id, $persianDefinition->id])}}"
-                                             class="btn btn-success edit">Edit</a>
+                                             class="btn btn-success edit">ویرایش</a>
                                         @endauth
                                    </div>
 
@@ -114,7 +113,7 @@
                                                             'route' => ['persian.destroy', $word->id, $persianDefinition->id]])
                                                             }}
                                              <button onclick="return confirm('Are You Sure?')" type="submit" class="btn btn-xs btn-danger delete">
-                                                  Delete
+                                                  حذف
                                              </button>
                                              {{ Form::close() }}
                                         @endrole
@@ -160,7 +159,7 @@
 
                @auth
                     <a href="{{route('english.create', $word->id)}}" class="btn btn-success add-definition">
-                         + Add New English Definition
+                         اضافه کردن تعریف انگلیسی جدید +
                     </a>
                @endauth
 
@@ -177,7 +176,7 @@
                          <div class="col-4">
                               @auth
                                    <a href="{{route('english.edit' , [$word->id, $englishDefinition->id])}}" class="btn btn-success edit">
-                                        Edit
+                                        ویرایش
                                    </a>
                               @endauth
                          </div>
@@ -212,7 +211,7 @@
                                    'route' => ['english.destroy' , $word->id, $englishDefinition->id]])
                                    }}
                                    <button onclick="return confirm('Are You Sure?')" type="submit" class="btn btn-xs btn-danger delete">
-                                        Delete
+                                        حذف
                                    </button>
                                    {{ Form::close() }}
                               @endrole
@@ -251,7 +250,7 @@
 
                @auth
                     <a href="{{route('example.create', $word->id)}}" class="btn btn-success add-definition">
-                         + Add New Example
+                         اضافه کردن مثال جدید +
                     </a>
                @endauth
 
@@ -273,7 +272,7 @@
                          <div class="col-4">
                               @auth
                                    <a href="{{route('example.edit' , [$word->id, $example->id])}}"
-                                   class="btn btn-success edit">Edit</a>
+                                   class="btn btn-success edit">ویرایش</a>
                               @endauth
                          </div>
 
@@ -307,7 +306,7 @@
                                    'route' => ['example.destroy' , $word->id, $example->id]])
                                    }}
                                    <button onclick="return confirm('Are You Sure?')" type="submit" class="btn btn-xs btn-danger delete">
-                                        Delete
+                                        حذف
                                    </button>
                                    {{ Form::close() }}
                               @endrole

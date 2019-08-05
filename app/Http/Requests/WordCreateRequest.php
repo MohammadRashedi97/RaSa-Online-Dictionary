@@ -25,9 +25,9 @@ class WordCreateRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'word' => 'required|unique:words,word|max:255|alpha_num',
+            'word' => 'required|unique:words,word|max:255|alpha_num|string',
             'category_id' => 'required',
-            'persianDefinition' => 'required|max:255'
+            'persianDefinition' => 'required|max:255|string'
         ];
 
         return $rules;

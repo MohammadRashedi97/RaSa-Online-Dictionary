@@ -18,18 +18,18 @@
         {{-- Left side of navbar --}}
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="{{route('index')}}">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{route('index')}}">خانه <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/contact">Contact Us</a>
+                <a class="nav-link" href="/contact">تماس با ما</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/about">About Us</a>
+                <a class="nav-link" href="/about">درباره ما</a>
             </li>
             {{-- only show add post link if user is logged in --}}
             @if (Auth::check())
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('word.create') }}">+ Add New Word</a>
+                    <a class="nav-link" href="{{ route('word.create') }}">اضافه کردن واژه جدید +</a>
                 </li>
             @endif
         </ul>
@@ -46,11 +46,11 @@
             {{-- Guest User --}}
             @guest
                 <li class="nav-item" id="login">
-                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    <a class="nav-link" href="{{ route('login') }}">{{ __('ورود') }}</a>
                 </li>
             @if (Route::has('register'))
                 <li class="nav-item" id="register">
-                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    <a class="nav-link" href="{{ route('register') }}">{{ __('ثبت نام') }}</a>
                 </li>
             @endif
             {{-- Logged User --}}
@@ -62,10 +62,10 @@
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a>
+                        <a class="dropdown-item" href="{{ route('dashboard') }}">داشبرد</a>
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
+                            {{ __('خروج') }}
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

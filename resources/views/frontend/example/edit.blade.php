@@ -6,7 +6,7 @@
 
      <br>
      {{-- Form Title --}}
-     <h1 class="text-center" style="color: brown;">Edit an Existing Example</h1>
+     <h1 class="text-center" style="color: brown;">ویرایش مثال</h1>
 
      {{-- Form for creating a new word (PUT) --}}
      {!! Form::model($example,[

@@ -48,6 +48,11 @@ class PersianDefinitionController extends Controller
      */
     public function store(Request $request, Word $word)
     {
+        $request->validate([
+            'category_id' => 'required',
+            'persianDefinition' => 'required|string|max:255'
+        ]);
+
         $persianDefinition = new PersianDefinition();
         $persianDefinition->category_id = Purifier::clean($request['category_id']);
         $persianDefinition->persianDefinition = Purifier::clean($request['persianDefinition']);
@@ -90,11 +95,14 @@ class PersianDefinitionController extends Controller
      */
     public function update(Request $request, Word $word, $id)
     {
-        $request['persianDefinition'] = $request['persianDefinition'];
+        $request->validate([
+            'category_id' => 'required',
+            'persianDefinition' => 'required|string|max:255'
+        ]);
 
         $persianDefinition = PersianDefinition::findOrFail($id);
         // update the word with id
-        $persianDefinition->update($request->all());
+        $persianDefinition->update(Purifier::clean($request->all()));
 
          // Redirect to show view with a message
          return redirect("/word/{$word->id}")->with('message' , 'Persian Definition Updated Successfully');
