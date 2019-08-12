@@ -3,6 +3,7 @@
 @section('title' , 'RaSa Online Dictionary - Edit an Existing Definition')
 
 @section('content')
+
      <br>
      {{-- Form Title --}}
      <h1 class="text-center" style="color: brown;">ویرایش تعریف انگلیسی</h1>
@@ -10,13 +11,13 @@
      {{-- Form for creating a new word (POST) --}}
      {!! Form::model($definition,[
      'method' => 'PUT',
-     'route' => ['persian.update', $word->id, $definition->id],
+     'route' => ['english.update', $word->id, $definition->id],
      'files' => TRUE,
-     'id' => 'persian-form'
+     'id' => 'definition-form'
      ])!!}
 
      {{-- Including form --}}
-     @include('backend.dictionary.persian-definition.form')
+     @include('frontend.english-definition.form')
 
      {!! Form::close() !!}
 
@@ -25,9 +26,6 @@
 {{-- Ckedtor Script --}}
 @section('script')
 <script>
-     CKEDITOR.replace( 'persian-editor', {
-          language: 'fa',
-          contentsLangDirection: 'rtl',
-     });
+     CKEDITOR.replace('english-editor');
 </script>
 @endsection

@@ -97,7 +97,7 @@ class ExampleController extends Controller
     {
         $request->validate([
             'example' => 'required|string|max:255',
-            'meaning' => 'max:255'
+            'meaning' => 'nullable|string|max:255'
         ]);
 
         $example = Example::findOrFail($id);

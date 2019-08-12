@@ -6,9 +6,17 @@ use App\Word;
 use Faker\Generator as Faker;
 
 $factory->define(Word::class, function (Faker $faker) {
-    return [
-        'word' => $faker->word,
-        'created_at' => now(),
-        'updated_at' => now()
+    return
+    [
+        [
+            'word' => 'a',
+            'created_at' => now(),
+            'updated_at' => now()
+        ],
+        [
+            'word' => 'b',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]
     ];
 });

@@ -10,3 +10,8 @@
      color: rgb(160, 12, 12);
      font-size: 22px;
 }
+
+thead{
+     font-weight: bold;
+     font-size: 16px;
+}

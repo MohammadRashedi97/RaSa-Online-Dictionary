@@ -23,7 +23,7 @@
                          <h5 class="card-title">Random English Word</h5>
                          <hr>
                          <h6 class="card-subtitle mb-2 text-muted d-inline">{!! $randomWord1->word !!}</h6>
-                         <div class="card-text">{!! $persianDefinition1 !!}</div>
+                         <div class="card-text text-right rtl">{!! str_limit($persianDefinition1, $limit = 100, $end = '...') !!}</div>
                          <a href="{{route('word.show', $randomWord1->id)}}" class="card-link float-left">Word Page</a>
                     </div>
                </div>
@@ -32,11 +32,11 @@
           {{-- Right word card --}}
           <div class="col-lg-6">
                <div class="card" id="right-card">
-                    <div class="card-block">
+                    <div class="card-body">
                          <h5 class="card-title">Random English Word</h5>
                          <hr>
                          <h6 class="card-subtitle mb-2 text-muted d-inline">{!! $randomWord2->word !!}</h6>
-                         <div class="card-text">{!! $persianDefinition2 !!}</div>
+                         <div class="card-text text-right rtl">{!! str_limit($persianDefinition2, $limit = 100, $end = '...') !!}</div>
                          <a href="{{route('word.show', $randomWord2->id)}}" class="card-link float-left">Word Page</a>
                     </div>
                </div>

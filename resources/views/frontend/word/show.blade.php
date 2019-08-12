@@ -39,104 +39,111 @@
           </div>
      </div>
 
-     <div id="persian-definitions">
+     @if (count($persianDefinitions) === 0)
+          <br>
+          <a href="{{route('persian.create', $word->id)}}" class="btn btn-success add-definition center" style="width: 250px;margin-top: 20px;">
+               یک معنای فارسی اضافه کنید +
+          </a>
+     @else
+          <div id="persian-definitions">
 
-          {{-- list definitions for each category --}}
-          @foreach($categories as $category)
+               {{-- list definitions for each category --}}
+               @foreach($categories as $category)
 
-               <br>
+                    <br>
 
-               <div class="category-box">
+                    <div class="category-box">
 
-                    @if($loop->first)
-                         @auth
-                              <a href="{{route('persian.create', $word->id)}}" class="btn btn-success add-definition">اضافه کردن معنای فارسی جدید +</a>
-                         @endauth
-                    @endif
-
-                    {{-- Don't echo category name if it's عمومی --}}
-                    @if($category->name != 'عمومی')
-                         <h3 class="text-center category-header">{{ $category->name }}</h3>
-                    @endif
-
-                    {{-- Echo definitions in each category --}}
-                    @foreach ($persianDefinitions as $persianDefinition)
-
-                         @if($persianDefinition->category_id == $category->id)
-
-                              {{-- Persian Definition --}}
-                              <div lang="fa" class="text-right persian-definition">
-                                   <b style="color: #7D1874;font-size: 20px;">معنی : </b>
-                                   {!! $persianDefinition->persianDefinition !!}
-                              </div>
-
-                              {{-- <br> --}}
-
-                              {{-- Botton row containing edit and delete buttons and like and dislike buttons --}}
-                              <div class="row">
-
-                                   {{-- Edit Button --}}
-                                   <div class="col-4">
-                                        @auth
-                                        <a href="{{route('persian.edit' , [$word->id, $persianDefinition->id])}}"
-                                             class="btn btn-success edit">ویرایش</a>
-                                        @endauth
-                                   </div>
-
-                                   {{-- Row Containing Like and Dislike Buttons --}}
-                                   <div class="col-4">
-                                        <div class="row">
-
-                                             {{-- Like Button --}}
-                                             <div class="col-6 text-right">
-                                                  <div class="persian-like-div" data-id="{{$persianDefinition->id}}">
-                                                       <i style="color: green;cursor: pointer" class="fa fa-thumbs-up"></i>
-                                                       <span class="like">{{ $persianDefinition->like_count }}</span>
-                                                  </div>
-                                             </div>
-
-                                             {{-- Dislike Button --}}
-                                             <div class="col-6 text-left">
-                                                  <div class="persian-dislike-div" data-id="{{$persianDefinition->id}}">
-                                                       <i style="color: red;cursor: pointer" class="fa fa-thumbs-down"></i>
-                                                       <span class="dislike">{{ $persianDefinition->dislike_count }}</span>
-                                                  </div>
-                                             </div>
-
-                                        </div>
-                                   </div>
-
-                                   {{-- Delete Button --}}
-                                   <div class="col-4 text-right">
-                                        @role('admin')
-                                             {{ Form::open(['method' => 'DELETE' ,
-                                                            'route' => ['persian.destroy', $word->id, $persianDefinition->id]])
-                                                            }}
-                                             <button onclick="return confirm('Are You Sure?')" type="submit" class="btn btn-xs btn-danger delete">
-                                                  حذف
-                                             </button>
-                                             {{ Form::close() }}
-                                        @endrole
-                                   </div>
-
-                              </div>
-
-                              <br>
-                              @if (!$loop->last)
-                                   <hr class="sky-hr">
-                              @endif
-
+                         @if($loop->first)
+                              @auth
+                                   <a href="{{route('persian.create', $word->id)}}" class="btn btn-success add-definition">اضافه کردن معنای فارسی جدید +</a>
+                              @endauth
                          @endif
 
-                    @endforeach
-               </div>
+                         {{-- Don't echo category name if it's عمومی --}}
+                         @if($category->name != 'عمومی')
+                              <h3 class="text-center category-header">{{ $category->name }}</h3>
+                         @endif
 
-               @if (!$loop->last)
-               <hr class="blue-hr" style="margin-top: -4px;">
-               @endif
+                         {{-- Echo definitions in each category --}}
+                         @foreach ($persianDefinitions as $persianDefinition)
 
-          @endforeach
-     </div>
+                              @if($persianDefinition->category_id == $category->id)
+
+                                   {{-- Persian Definition --}}
+                                   <div lang="fa" class="text-right persian-definition">
+                                        <b style="color: #7D1874;font-size: 20px;">معنی : </b>
+                                        {!! $persianDefinition->persianDefinition !!}
+                                   </div>
+
+                                   {{-- <br> --}}
+
+                                   {{-- Botton row containing edit and delete buttons and like and dislike buttons --}}
+                                   <div class="row">
+
+                                        {{-- Edit Button --}}
+                                        <div class="col-4">
+                                             @auth
+                                             <a href="{{route('persian.edit' , [$word->id, $persianDefinition->id])}}"
+                                                  class="btn btn-success edit">ویرایش</a>
+                                             @endauth
+                                        </div>
+
+                                        {{-- Row Containing Like and Dislike Buttons --}}
+                                        <div class="col-4">
+                                             <div class="row">
+
+                                                  {{-- Like Button --}}
+                                                  <div class="col-6 text-right">
+                                                       <div class="persian-like-div" data-id="{{$persianDefinition->id}}">
+                                                            <i style="color: green;cursor: pointer" class="fa fa-thumbs-up"></i>
+                                                            <span class="like">{{ $persianDefinition->like_count }}</span>
+                                                       </div>
+                                                  </div>
+
+                                                  {{-- Dislike Button --}}
+                                                  <div class="col-6 text-left">
+                                                       <div class="persian-dislike-div" data-id="{{$persianDefinition->id}}">
+                                                            <i style="color: red;cursor: pointer" class="fa fa-thumbs-down"></i>
+                                                            <span class="dislike">{{ $persianDefinition->dislike_count }}</span>
+                                                       </div>
+                                                  </div>
+
+                                             </div>
+                                        </div>
+
+                                        {{-- Delete Button --}}
+                                        <div class="col-4 text-right">
+                                             @role('admin')
+                                                  {{ Form::open(['method' => 'DELETE' ,
+                                                                 'route' => ['persian.destroy', $word->id, $persianDefinition->id]])
+                                                                 }}
+                                                  <button onclick="return confirm('Are You Sure?')" type="submit" class="btn btn-xs btn-danger delete">
+                                                       حذف
+                                                  </button>
+                                                  {{ Form::close() }}
+                                             @endrole
+                                        </div>
+
+                                   </div>
+
+                                   <br>
+                                   @if (!$loop->last)
+                                        <hr class="sky-hr">
+                                   @endif
+
+                              @endif
+
+                         @endforeach
+                    </div>
+
+                    @if (!$loop->last)
+                    <hr class="blue-hr" style="margin-top: -4px;">
+                    @endif
+
+               @endforeach
+          </div>
+     @endif
 
 
      <hr class="blue-hr" style="margin-top: -4px;">
@@ -239,7 +246,7 @@
 
      @if (count($examples) === 0)
           <br>
-          <a href="{{route('english.create', $word->id)}}" class="btn btn-success add-definition center" style="width: 250px;margin-top: 20px;">
+          <a href="{{route('example.create', $word->id)}}" class="btn btn-success add-definition center" style="width: 250px;margin-top: 20px;">
                یک مثال جدید اضافه کنید +
           </a>
      @else

@@ -3,33 +3,29 @@
 @section('title' , 'RaSa Online Dictionary - Add a New Definition to Dictionary')
 
 @section('content')
-@section('content')
 
      <br>
      {{-- Form Title --}}
      <h1 class="text-center" style="color: brown;">ایجاد یک تعریف انگلیسی</h1>
 
      {{-- Form for creating a new word (POST) --}}
-     {{ Form::model($definition,[
+     {!! Form::model($definition,[
      'method' => 'POST',
-     'route' => ['persian.store', $word->id],
+     'route' => ['english.store', $word->id],
      'files' => TRUE,
-     'id' => 'persian-form'
-     ])}}
+     'id' => 'definition-form'
+     ])!!}
 
      {{-- Including form --}}
-     @include('backend.dictionary.persian-definition.form')
+     @include('frontend.english-definition.form')
 
-     {{ Form::close() }}
+     {!! Form::close() !!}
 
 @endsection
 
 {{-- Ckedtor Script --}}
 @section('script')
 <script>
-     CKEDITOR.replace( 'persian-editor', {
-          language: 'fa',
-          contentsLangDirection: 'rtl',
-     });
+     CKEDITOR.replace('english-editor');
 </script>
 @endsection

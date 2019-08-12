@@ -58,7 +58,8 @@ Route::get('/contact', 'HomeController@contactUs')->name('contact');
 
 // Resource Route for the backend dictionary
 Route::resource('/backend/dictionary', 'Backend\DictionaryController', [
-    'as' => 'backend'
+    'as' => 'backend',
+    'parameters' => ['dictionary' => 'word']
 ]);
 
 // Alphabetical Navigaion Route
@@ -83,6 +84,20 @@ Route::get('/callback', 'Auth\LoginController@handleProviderCallback');
 Route::resource('/word/{word}/persian', 'PersianDefinitionController');
 Route::resource('/word/{word}/english', 'EnglishDefinitionController');
 Route::resource('/word/{word}/example', 'ExampleController');
+
+
+Route::resource('/backend/dictionary/{word}/persian', 'Backend\PersianDefinitionController', [
+    'as' => 'backend'
+]);
+Route::resource('/backend/dictionary/{word}/english', 'Backend\EnglishDefinitionController', [
+    'as' => 'backend'
+]);
+Route::resource('/backend/dictionary/{word}/example', 'Backend\ExampleController', [
+    'as' => 'backend'
+]);
+
+
+
 
 // Route responsible for liking a word
 Route::post('/persian-definition/{id}/like', [

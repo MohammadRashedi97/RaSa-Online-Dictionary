@@ -4,12 +4,12 @@
                @include('partials.message')
                <p><b style="color: red">Note : </b>You can Write both English and Persian Definitions for a word. or you can write only on of them. but you Must fill at least one of them.</p>
 
-               <div class="form-group {{$errors->has('englishEntry') ? 'has-error' : ''}}">
-                    {!! Form::label('englishEntry' , 'Word Name') !!}
-                    {!! Form::text('englishEntry' , null , ['class' => 'form-control']) !!}
+               <div class="form-group {{$errors->has('word') ? 'has-error' : ''}}">
+                    {!! Form::label('word' , 'Word') !!}
+                    {!! Form::text('word' , null , ['class' => 'form-control']) !!}
 
-                    @if ($errors->has('englishEntry'))
-                    <span class="text-danger">Word can't be empty.</span>
+                    @if ($errors->has('word'))
+                    <span class="text-danger">{{$errors->first('word')}}</span>
                     @endif
                </div>
                <br>
@@ -20,7 +20,7 @@
                     !!}
 
                     @if ($errors->has('category_id'))
-                    <span class="text-danger">The category is required.</span>
+                    <span class="text-danger">{{$errors->first('category_id')}}</span>
                     @endif
                </div>
                <br>
@@ -41,6 +41,24 @@
 
                     @if ($errors->has('englishDefinition'))
                     <span class="text-danger">{{$errors->first('englishDefinition')}}</span>
+                    @endif
+               </div>
+
+               <div class="form-group {{$errors->has('example') ? 'has-error' : ''}}">
+                    {!! Form::label('example' , 'Example') !!}
+                    {!! Form::textArea('example' , null , ['class' => 'form-control', 'id' => 'example-editor']) !!}
+
+                    @if ($errors->has('example'))
+                    <span class="text-danger">{{$errors->first('example')}}</span>
+                    @endif
+               </div>
+
+               <div class="form-group {{$errors->has('meaning') ? 'has-error' : ''}}">
+                    {!! Form::label('meaning' , 'Example Meaning') !!}
+                    {!! Form::textArea('meaning' , null , ['class' => 'form-control', 'id' => 'meaning-editor']) !!}
+
+                    @if ($errors->has('meaning'))
+                    <span class="text-danger">{{$errors->first('meaning')}}</span>
                     @endif
                </div>
           </div>

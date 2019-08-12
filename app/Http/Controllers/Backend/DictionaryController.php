@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use App\Word;
 use Illuminate\Support\Facades\Auth;
+use App\EnglishDefinition;
+use App\PersianDefinition;
+use App\Example;
 
 class DictionaryController extends BackendController
 {
@@ -72,9 +75,47 @@ class DictionaryController extends BackendController
      */
     public function store(Request $request)
     {
-        $word = Word::create($request->all());
-        $word->user_id = Auth::id();
+        $request->validate([
+            'word' => 'required|unique:words,word|max:255|alpha_num|string',
+            'category_id' => 'required_with:persianDefinition|nullable|numeric',
+            'persianDefinition' => 'required_with:category_id|nullable|string|max:255',
+            'englishDefinition' => 'nullable|string|max:255',
+            'example' => 'required_with:meaning|nullable|string|max:255',
+            'meaning' => 'nullable|string|max:255'
+        ]);
+
+        $word = new Word();
+        $word->word = $request['word'];
         $word->save();
+
+        if($request['category_id'] !== null)
+        {
+            $persianDefinition = new PersianDefinition();
+            $persianDefinition->category_id = $request['category_id'];
+            $persianDefinition->persianDefinition = $request['persianDefinition'];
+            $persianDefinition->word_id = $word->id;
+            $persianDefinition->user_id = Auth::user()->id;
+            $persianDefinition->save();
+        }
+
+        if($request['englishDefinition'] !== null)
+        {
+            $englishDefinition = new EnglishDefinition();
+            $englishDefinition->englishDefinition = $request['englishDefinition'];
+            $englishDefinition->word_id = $word->id;
+            $englishDefinition->user_id = Auth::user()->id;
+            $englishDefinition->save();
+        }
+
+        if($request['example'] !== null)
+        {
+            $example = new Example();
+            $example->example = $request['example'];
+            $example->meaning = $request['meaning'];
+            $example->word_id = $word->id;
+            $example->user_id = Auth::id();
+            $example->save();
+        }
 
         return redirect('/backend/dictionary')->with('message' , 'Word Created Successfully');
     }
@@ -85,14 +126,13 @@ class DictionaryController extends BackendController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($englishEntry)
+    public function show(Word $word)
     {
-        $word = Word::where('englishEntry', $englishEntry)->first();
-        $returned_values = $word->getWords($word->englishEntry);
-        $words = $returned_values['words'];
-        $categories = $returned_values['categories'];
+        $persianDefinitions = $word->getPersianDefinitions($word);
+        $englishDefinitions = $word->getEnglishDefinitions($word);
+        $examples = $word->getExamples($word);
 
-        return view('frontend.show', compact('words', 'categories'));
+        return view('backend.dictionary.show', compact('word', 'persianDefinitions', 'englishDefinitions', 'examples'));
     }
 
     /**

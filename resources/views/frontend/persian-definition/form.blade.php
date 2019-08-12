@@ -1,7 +1,6 @@
 {{-- Form Card --}}
 <div class="card center" id="form-card">
      <div class="card-body">
-
           {{-- Category --}}
           <div class="form-group">
                {{ Form::select('category_id' , App\Category::pluck('name' , 'id') , null ,
@@ -28,7 +27,7 @@
           </div>
 
      </div>
-     <!-- /Card Body -->
+          <!-- /Card Body -->
 </div>
 <br><br>
 <!-- /Card -->

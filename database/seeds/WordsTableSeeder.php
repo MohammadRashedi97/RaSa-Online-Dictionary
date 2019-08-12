@@ -11,6 +11,13 @@ class WordsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Word::class, 50)->create();
+
+        DB::table('words')->insert([
+            [
+                'word' => 'Uncategorized',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+        ]);
     }
 }

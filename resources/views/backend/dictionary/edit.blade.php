@@ -26,7 +26,7 @@
                     'id'    => 'word-form'
                ])!!}
 
-               @include('backend.dictionary.form')
+               @include('backend.dictionary.edit-form')
 
                {!! Form::close() !!}
                </div>
@@ -35,15 +35,4 @@
      </section>
 
 </div>
-@endsection
-
-@section('script')
-<script>
-     CKEDITOR.replace( 'persian-editor', {
-          language: 'fa',
-          contentsLangDirection: 'rtl',
-     });
-
-     CKEDITOR.replace('english-editor');
-</script>
 @endsection

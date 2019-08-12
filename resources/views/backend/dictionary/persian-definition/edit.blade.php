@@ -1,7 +1,7 @@
 @extends('layouts.backend.main')
 
-@section('content')
-<!-- Main content -->
+@section('title' , 'RaSa Online Dictionary - Edit an Existing Definition')
+
 @section('content')
 <div class="content-wrapper">
      <!-- Content Header (Page header) -->
@@ -16,40 +16,33 @@
           </ol>
      </section>
 
-     <!-- Main content -->
+      <!-- Main content -->
      <section class="content">
           <div class="row">
-               {!! Form::model($word,[
-                    'method' => 'POST',
-                    'route' => 'backend.dictionary.store',
-                    'files' => TRUE,
-                    'id'    => 'word-form'
+               {{-- Form for creating a new word (POST) --}}
+               {!! Form::model($definition,[
+               'method' => 'PUT',
+               'route' => ['backend.persian.update', $word->id, $definition->id],
+               'files' => TRUE,
+               'id' => 'persian-form'
                ])!!}
 
-               @include('backend.dictionary.create-form')
+               {{-- Including form --}}
+               @include('backend.dictionary.persian-definition.form')
 
                {!! Form::close() !!}
-               </div>
-
           </div>
      </section>
 
 </div>
 @endsection
 
+{{-- Ckedtor Script --}}
 @section('script')
 <script>
      CKEDITOR.replace( 'persian-editor', {
           language: 'fa',
           contentsLangDirection: 'rtl',
      });
-
-     CKEDITOR.replace( 'meaning-editor', {
-          language: 'fa',
-          contentsLangDirection: 'rtl',
-     });
-
-     CKEDITOR.replace('english-editor');
-     CKEDITOR.replace('example-editor');
 </script>
 @endsection
