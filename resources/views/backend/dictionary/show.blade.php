@@ -92,9 +92,9 @@
                                     <tr>
                                         <td>
                                             {!! Form::open(['method' => 'DELETE' ,
-                                            'route' => ['backend.dictionary.destroy' , $word->id]])
+                                            'route' => ['backend.english.destroy' , $word->id, $englishDefinition->id]])
                                             !!}
-                                                <a href="{{route('backend.dictionary.edit' , $word->id)}}" class="btn btn-xs btn-default">
+                                                <a href="{{route('backend.english.edit' , [$word->id, $englishDefinition->id])}}" class="btn btn-xs btn-default">
                                                         <i class="fa fa-edit"></i>
                                                 </a>
                                                 <button onclick="return confirm('Are You Sure?')" type="submit" class="btn btn-xs btn-danger">
@@ -139,17 +139,16 @@
                                     @foreach ($examples as $example)
                                     <tr>
                                         <td>
-                                             Hello
-                                            {{-- {!! Form::open(['method' => 'DELETE' ,
-                                            'route' => ['backend.dictionary.destroy' , $word->id]])
+                                            {!! Form::open(['method' => 'DELETE' ,
+                                            'route' => ['backend.example.destroy' , $word->id, $example->id]])
                                             !!}
-                                                <a href="{{route('backend.dictionary.edit' , $word->id)}}" class="btn btn-xs btn-default">
+                                                <a href="{{route('backend.example.edit' , [$word->id, $example->id])}}" class="btn btn-xs btn-default">
                                                         <i class="fa fa-edit"></i>
                                                 </a>
                                                 <button onclick="return confirm('Are You Sure?')" type="submit" class="btn btn-xs btn-danger">
                                                     <i class="fa fa-trash"></i>
                                                 </button>
-                                            {!! Form::close() !!} --}}
+                                            {!! Form::close() !!}
                                         </td>
                                         <td>{{$example->id}}</td>
                                         <td>{{$word->word}}</td>

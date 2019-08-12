@@ -36,5 +36,5 @@
 {{-- Buttons for creating(or editing) and cancelling --}}
 <div class="text-center">
      <button type="submit" class="btn btn-primary">{{$definition->exists ? 'بروزرسانی' : 'ایجاد'}}</button>
-     <a href="{{route('word.show', $word->id)}}" class="btn btn-success">بازگشت</a>
+     <a href="{{route('backend.dictionary.show', $word->id)}}" class="btn btn-success">بازگشت</a>
 </div>
