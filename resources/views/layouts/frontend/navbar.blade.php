@@ -17,21 +17,38 @@
 
         {{-- Left side of navbar --}}
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="{{route('index')}}">خانه <span class="sr-only">(current)</span></a>
+            <!-- Authentication Links -->
+            {{-- Guest User --}}
+            @guest
+            <li class="nav-item" id="login" style="margin-left: 50px;">
+                <a class="nav-link" href="{{ route('login') }}">{{ __('ورود') }}</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/contact">تماس با ما</a>
+            @if (Route::has('register'))
+            <li class="nav-item" id="register">
+                <a class="nav-link" href="{{ route('register') }}">{{ __('ثبت نام') }}</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/about">درباره ما</a>
-            </li>
-            {{-- only show add post link if user is logged in --}}
-            @if (Auth::check())
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('word.create') }}">اضافه کردن واژه جدید +</a>
-                </li>
             @endif
+            {{-- Logged User --}}
+            @else
+            <li class="nav-item dropdown" id="dropdown" style="margin-left: 50px;">
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" v-pre>
+                    {{ Auth::user()->name }} <span class="caret"></span>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ route('dashboard') }}">داشبرد</a>
+                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                        {{ __('خروج') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </div>
+            </li>
+            @endguest
         </ul>
 
         {{-- middle logo --}}
@@ -41,39 +58,23 @@
 
         <!-- Right Side Of Navbar -->
         <ul class="navbar-nav ml-auto">
-
-            <!-- Authentication Links -->
-            {{-- Guest User --}}
-            @guest
-                <li class="nav-item" id="login">
-                    <a class="nav-link" href="{{ route('login') }}">{{ __('ورود') }}</a>
-                </li>
-            @if (Route::has('register'))
-                <li class="nav-item" id="register">
-                    <a class="nav-link" href="{{ route('register') }}">{{ __('ثبت نام') }}</a>
-                </li>
+            {{-- only show add post link if user is logged in --}}
+            @if (Auth::check())
+            <li class="nav-item" id="add-word">
+                <a class="nav-link" href="{{ route('word.create') }}">اضافه کردن واژه جدید +</a>
+            </li>
             @endif
-            {{-- Logged User --}}
-            @else
-                <li class="nav-item dropdown" id="dropdown">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }} <span class="caret"></span>
-                    </a>
 
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('dashboard') }}">داشبرد</a>
-                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">
-                            {{ __('خروج') }}
-                        </a>
+            <li class="nav-item" id="contact-us">
+                <a class="nav-link" href="/contact">تماس با ما</a>
+            </li>
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    </div>
-                </li>
-            @endguest
+            <li class="nav-item" id="about-us">
+                <a class="nav-link" href="/about">درباره ما</a>
+            </li>
+            <li class="nav-item" style="margin-right: 40px;" id="home">
+                <a class="nav-link" href="{{route('index')}}">خانه <span class="sr-only">(current)</span></a>
+            </li>
         </ul>
 
     </div>

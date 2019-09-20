@@ -44,10 +44,11 @@ class DictionaryController extends BackendController
      */
     public function AlphabetNavigation($char)
     {
+        $charLower = strtolower($char);
         $user = Auth::user();
         if($user->hasRole(['admin', 'editor']))
         {
-            $words = Word::where('word', 'LIKE', "$char%")->orderBy('word')->paginate(20);
+            $words = Word::where('word', 'LIKE', "$char%")->orWhere('word', 'LIKE', "$charLower%")->orderBy('word')->paginate(20);
             return view('backend.dictionary.index', compact('words'));
         }
         else

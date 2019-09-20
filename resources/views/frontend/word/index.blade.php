@@ -20,7 +20,7 @@
           <div class="col-lg-6">
                <div class="card" id="left-card">
                     <div class="card-body">
-                         <h5 class="card-title">Random English Word</h5>
+                         <h5 class="card-title text-center rtl">واژه انگلیسی 2</h5>
                          <hr>
                          <h6 class="card-subtitle mb-2 text-muted d-inline">{!! $randomWord1->word !!}</h6>
                          <div class="card-text text-right rtl">{!! str_limit($persianDefinition1, $limit = 100, $end = '...') !!}</div>
@@ -33,7 +33,7 @@
           <div class="col-lg-6">
                <div class="card" id="right-card">
                     <div class="card-body">
-                         <h5 class="card-title">Random English Word</h5>
+                         <h5 class="card-title text-center rtl">واژه انگلیسی 1</h5>
                          <hr>
                          <h6 class="card-subtitle mb-2 text-muted d-inline">{!! $randomWord2->word !!}</h6>
                          <div class="card-text text-right rtl">{!! str_limit($persianDefinition2, $limit = 100, $end = '...') !!}</div>
@@ -136,4 +136,10 @@
 
      </div>
 
+@endsection
+
+@section('script')
+<script>
+	$('#home').addClass('active');
+</script>
 @endsection

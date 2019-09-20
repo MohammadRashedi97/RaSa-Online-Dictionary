@@ -31,6 +31,8 @@
           contentsLangDirection: 'rtl',
      });
 
+     $('#add-word').addClass('active');
+
      // CKEDITOR.replace('english-editor');
 </script>
 @endsection

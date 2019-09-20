@@ -17,3 +17,9 @@
      <br><br>
 </div>
 @endsection
+
+@section('script')
+<script>
+	$('#contact-us').addClass('active');
+</script>
+@endsection

@@ -21,3 +21,9 @@
           <br><br>
      </div>
 @endsection
+
+@section('script')
+<script>
+	$('#about-us').addClass('active');
+</script>
+@endsection

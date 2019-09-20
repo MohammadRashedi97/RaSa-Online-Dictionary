@@ -7,7 +7,7 @@
 
      <br>
      {{-- Form Title --}}
-     <h1 class="text-center" style="color: brown;">ایجاد یک تعریف انگلیسی</h1>
+     <h1 class="text-center" style="color: brown;">اضافه کردن معنای فارسی </h1>
 
      {{-- Form for creating a new word (POST) --}}
      {{ Form::model($definition,[
@@ -18,7 +18,7 @@
      ])}}
 
      {{-- Including form --}}
-     @include('backend.dictionary.persian-definition.form')
+     @include('frontend.persian-definition.form')
 
      {{ Form::close() }}
 

@@ -70,7 +70,7 @@ $(document).ready(function () {
    $('.dropdown-toggle').dropdown();
 
    // fade the alert
-   $('.message-alert').fadeOut(3000);
+   $('.alert-message').fadeOut(3000);
 
    var english_persian = $('#english-persian');
    var persian_english = $('#persian-english');
